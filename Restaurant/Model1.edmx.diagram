@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87027a6abfed4c2f91c5eba4520d1718" Name="Diagram1">
+        <EntityTypeShape EntityType="kormyshevModel.Category1" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kormyshevModel.Discount1" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kormyshevModel.Product1" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kormyshevModel.Role1" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kormyshevModel.Sell1" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kormyshevModel.User1" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="kormyshevModel.FK_Product1_Category1" ManuallyRouted="false" />
+        <AssociationConnector Association="kormyshevModel.FK_Sell1_Discount1" ManuallyRouted="false" />
+        <AssociationConnector Association="kormyshevModel.FK_User1_Role1" ManuallyRouted="false" />
+        <AssociationConnector Association="kormyshevModel.FK_Sell1_User1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,59 @@
+﻿<Window x:Class="Restaurant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Войдите в систему" Height="450" Width="800" Background="LightGray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="390*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" x:Name="tbTime" HorizontalAlignment="Center" VerticalAlignment="Center">
+            </TextBlock>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition MinWidth="350" Width="400" MaxWidth="550"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="15" Orientation="Vertical" VerticalAlignment="Center" >
+                <PasswordBox Height="50" FontSize="24" Margin="5, 15" Name="tboxChangePassword" Visibility="Hidden">
+                    
+                </PasswordBox>
+                <Button Background="Orange" Grid.Column="1" Margin="5, 15" Foreground="White" FontSize="24" Name="btnChange" Click="btnChange_Click" Visibility="Hidden">
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center" 
+>
+                            Change Password
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+                <StackPanel Grid.Column="1" Margin="10">
+                <Label Margin="5,0">Enter your Login</Label>
+                <TextBox Height="50" Margin="5,10" FontSize="24" Name="tboxLogin"></TextBox>
+                <Label Margin="5,0">Enter your Password</Label>
+                <PasswordBox Height="50" Margin="5,10" FontSize="24" Name="pboxPassword"></PasswordBox>
+                <Grid Margin="0,10" Height="75">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Background="LightGreen" Margin="5" Foreground="White" FontSize="24" Name="btnLogin" Click="btnLogin_Click">Login</Button>
+                    <Button Background="Red" Grid.Column="1" Margin="5" Foreground="White" FontSize="24" Name="btnReset" Click="btnReset_Click">Reset</Button>
+                </Grid>
+                <Button FontSize="24" Height="75" Margin="5,0" Background="White" Name="btnExit" Click="btnExit_Click">
+                    <Image Source="power-button_4543090.png"></Image>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

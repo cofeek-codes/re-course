@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kormyshevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Discount1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Percent" Type="int" Nullable="false" />
+    <Property Name="Client" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sell1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="SellId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronomics" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Birthdate" Type="date" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Product1_Category1">
+    <End Role="Category1" Type="Self.Category1" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product1" Type="Self.Product1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product1">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sell1_Discount1">
+    <End Role="Discount1" Type="Self.Discount1" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sell1" Type="Self.Sell1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discount1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sell1">
+        <PropertyRef Name="SellId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sell1_User1">
+    <End Role="User1" Type="Self.User1" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sell1" Type="Self.Sell1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sell1">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User1_Role1">
+    <End Role="Role1" Type="Self.Role1" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User1" Type="Self.User1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="kormyshevModelStoreContainer">
+    <EntitySet Name="Category1" EntityType="Self.Category1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Discount1" EntityType="Self.Discount1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product1" EntityType="Self.Product1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role1" EntityType="Self.Role1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sell1" EntityType="Self.Sell1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User1" EntityType="Self.User1" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Product1_Category1" Association="Self.FK_Product1_Category1">
+      <End Role="Category1" EntitySet="Category1" />
+      <End Role="Product1" EntitySet="Product1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sell1_Discount1" Association="Self.FK_Sell1_Discount1">
+      <End Role="Discount1" EntitySet="Discount1" />
+      <End Role="Sell1" EntitySet="Sell1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sell1_User1" Association="Self.FK_Sell1_User1">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="Sell1" EntitySet="Sell1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User1_Role1" Association="Self.FK_User1_Role1">
+      <End Role="Role1" EntitySet="Role1" />
+      <End Role="User1" EntitySet="User1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
